@@ -11,40 +11,43 @@ import {
     SidebarMenuButton,
     SidebarMenuItem,
 } from "@/components/ui/sidebar"
-import { Calendar, Home, Inbox, Search, Settings } from "lucide-react"
+import { IndianRupee, Home, Paintbrush, Search, Settings } from "lucide-react"
 import Image from 'next/image'
 import { useParams, usePathname } from 'next/navigation'
+import { log } from 'console'
+
 
 const items = [
     {
-        title: "Home",
+        title: "workspace",
         url: "/dashboard",
         icon: Home,
     },
     {
-        title: "Inbox",
-        url: "#",
-        icon: Inbox,
+        title: "Design",
+        url: "design",
+        icon: Paintbrush,
     },
     {
-        title: "Calendar",
-        url: "#",
-        icon: Calendar,
+        title: "Credits",
+        url: "credits",
+        icon: IndianRupee,
     },
-    {
+   /* {
         title: "Search",
         url: "#",
         icon: Search,
-    },
-    {
+    },*/
+   /* {
         title: "Settings",
         url: "#",
         icon: Settings,
-    },
+    },*/
 ]
 
 export function AppSidebar() {
     const path = usePathname();
+    console.log(path)
     return (
         <Sidebar>
             <SidebarHeader>
@@ -60,11 +63,10 @@ export function AppSidebar() {
                     <SidebarGroupContent>
                         <SidebarMenu className='mt-5'>
                             {items.map((item, index) => (
-                                // <SidebarMenuItem key={item.title} className='p-2'>
-                                //     <SidebarMenuButton asChild className=''>
+                        
                                 <a href={item.url} key={index} className={`p-2 text-lg flex gap-2 items-center
                                  hover:bg-gray-100 dark:hover:bg-zinc-800 rounded-lg
-                                 ${path == item.url && 'bg-gray-100 dark:bg-zinc-800'}`}>
+                                 ${path == item.url && 'bg-gray-200 dark:bg-zinc-800'}`}>
                                     <item.icon className='h-5 w-5' />
                                     <span>{item.title}</span>
                                 </a>
